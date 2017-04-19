@@ -3,14 +3,17 @@ import test from 'tape';
 
 
 const defaultState = {
-  images: [],
-  loading: null,
-  error: null
+  images: ['https://farm3.staticflickr.com/2895/33240736124_447ec01bee.jpg', 'https://farm3.staticflickr.com/2904/34042636826_1a012432e3.jpg', 'https://farm3.staticflickr.com/2910/33271676693_1c3e6daeaf.jpg', 'https://farm3.staticflickr.com/2939/33952852201_7f8f62cda2.jpg'],
+  loading: false,
+  error: null,
+  selectedImg : 'https://farm3.staticflickr.com/2895/33240736124_447ec01bee.jpg'
 };
 
+import { FETCH_IMAGES, FETCH_IMAGES_SUCCESS, FETCH_IMAGES_FAILURE } from './reducer';
+
 // Replicate the reduce
-const getExpectedImages = (props = {}) => Object.assign({}, defaultState.images, props);
-const getExpectedQuestionsList = (props = {}) => Object.assign({}, defaultState.questionsList, props);
+const getExpectedImages = (props = {}) => Object.assign({}, defaultState, props);
+const getExpectedimageReducer = (props = {}) => Object.assign({}, defaultState.imageReducer, props);
 
 
  const images = ['https://farm3.staticflickr.com/2895/33240736124_447ec01bee.jpg', 'https://farm3.staticflickr.com/2904/34042636826_1a012432e3.jpg', 'https://farm3.staticflickr.com/2910/33271676693_1c3e6daeaf.jpg', 'https://farm3.staticflickr.com/2939/33952852201_7f8f62cda2.jpg']
@@ -23,8 +26,37 @@ export default () => {
 
     const actual = imageReducer(initialState);
 
-    const expected = getExpectedImages();
+    const expected = getExpectedImages(defaultState);
     assert.same(actual, expected, msg);
     assert.end();
   });
+  test('imageReducer given { type: FETCH_IMAGES_SUCCESS, payload: images}', assert => {
+    const msg = 'should populate the images array using data from response';
+    const initialState = imageReducer();
+    const action = {
+      type: FETCH_IMAGES_SUCCESS,
+      payload: images
+    }
+
+    const actual = imageReducer(initialState, action);
+
+    const expected = getExpectedImages({images, error: false,loading: false});
+    assert.same(actual, expected, msg);
+    assert.end();
+  })
+  test('imageReducer given { type: FETCH_IMAGES_FAILURE, payload: error}', assert => {
+    const msg = 'should return an error message';
+    const initialState = imageReducer();
+    let error = 'An error occured.'
+    const action = {
+      type: FETCH_IMAGES_FAILURE,
+      payload: error
+    }
+
+    const actual = imageReducer(initialState, action);
+
+    const expected = getExpectedImages({images:[], error,loading: false});
+    assert.same(actual, expected, msg);
+    assert.end();
+  })
 }

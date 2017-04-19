@@ -26,6 +26,7 @@
     "react-scripts": "0.9.5",
     "redux-devtools-extension": "^2.13.0",
     "redux-logger": "^3.0.0",
+    "redux-saga": "^0.14.6",
     "tape-jsx-equals": "^1.0.0",
     "tape-jsx-includes": "^1.1.0",
     "tape-jsx-notequals": "^1.0.3",
