@@ -8,7 +8,7 @@ export const defaultState = {
   images: ['https://farm3.staticflickr.com/2895/33240736124_447ec01bee.jpg', 'https://farm3.staticflickr.com/2904/34042636826_1a012432e3.jpg', 'https://farm3.staticflickr.com/2910/33271676693_1c3e6daeaf.jpg', 'https://farm3.staticflickr.com/2939/33952852201_7f8f62cda2.jpg'],
   loading: false,
   error: null,
-  selectedImage: 'https://farm3.staticflickr.com/2904/34042636826_1a012432e3.jpg'
+  selectedImage: { src: 'https://farm3.staticflickr.com/2904/34042636826_1a012432e3.jpg', title: 'title', id:  34042636826 }
 }
 
 export const fetchImagesAction = () => ({

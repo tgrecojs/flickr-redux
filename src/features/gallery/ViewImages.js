@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux';
 import { searchImages } from '../../api';
 import {selectImageAction} from './reducer'
+import './style.css';
 
 const ViewImages = ({images, onHandleSelectImage, selectedImage}) => {
   let input;
@@ -17,11 +18,10 @@ const ViewImages = ({images, onHandleSelectImage, selectedImage}) => {
       </div>
     </div>
       </div>
+       <div className="image-thumbs">
       {images.map((image, i) => (
-       <div key={i}>
-          <img src={image} onClick={() => onHandleSelectImage(image)}/>
-        </div>
-      ))}
+          <img key={i} src={image} onClick={() => onHandleSelectImage(image)}/>
+      ))} </div>
     </div>
   )
 }
