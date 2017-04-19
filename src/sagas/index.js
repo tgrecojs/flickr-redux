@@ -1,12 +1,19 @@
-import { call, put } from 'redux-saga/effects'
-import { searchImages } from '../api';
-function* fetchData(action) {
+import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
+import { searchImages, fetchImages } from '../api';
+import { FETCH_IMAGES_SUCCESS, FETCH_IMAGES_FAILURE } from '../features/gallery/reducer';
+
+function* getImages(action) {
    try {
-      const images = yield call(searchImages)
-      yield put({type: "FETCH_IMAGES_SUCCEESS", payload: images})
-   } catch (error) {
-      yield put({type: "FETCH_IMAGES_FAILURE", error})
+      const images = yield call(fetchImages, action.payload);
+      yield put({type: FETCH_IMAGES_SUCCESS, payload: images});
+   } catch (e) {
+      yield put({type: FETCH_IMAGES_FAILURE, payload: e.message});
    }
 }
 
-export default fetchData;
+
+function* rootSaga() {
+  yield takeLatest('FETCH_IMAGES', getImages)
+}
+
+export default rootSaga

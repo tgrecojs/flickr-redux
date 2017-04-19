@@ -6,10 +6,10 @@ const defaultState = {
   images: ['https://farm3.staticflickr.com/2895/33240736124_447ec01bee.jpg', 'https://farm3.staticflickr.com/2904/34042636826_1a012432e3.jpg', 'https://farm3.staticflickr.com/2910/33271676693_1c3e6daeaf.jpg', 'https://farm3.staticflickr.com/2939/33952852201_7f8f62cda2.jpg'],
   loading: false,
   error: null,
-  selectedImg : 'https://farm3.staticflickr.com/2895/33240736124_447ec01bee.jpg'
+  selectedImage : 'https://farm3.staticflickr.com/2895/33240736124_447ec01bee.jpg'
 };
 
-import { FETCH_IMAGES, FETCH_IMAGES_SUCCESS, FETCH_IMAGES_FAILURE } from './reducer';
+import { FETCH_IMAGES, FETCH_IMAGES_SUCCESS, FETCH_IMAGES_FAILURE, SELECTED_IMAGE } from './reducer';
 
 // Replicate the reduce
 const getExpectedImages = (props = {}) => Object.assign({}, defaultState, props);
@@ -56,6 +56,21 @@ export default () => {
     const actual = imageReducer(initialState, action);
 
     const expected = getExpectedImages({images:[], error,loading: false});
+    assert.same(actual, expected, msg);
+    assert.end();
+  })
+  test('imageReducer given { type: SELECTED_IMAGE, payload: image}', assert => {
+    const msg = 'should update our selectedImg state with a new img';
+    const initialState = imageReducer();
+    let image = 'https://farm3.staticflickr.com/2809/33887642345_6c1cce5114.jpg'
+    const action = {
+      type: SELECTED_IMAGE,
+      payload: image
+    }
+
+    const actual = imageReducer(initialState, action);
+
+    const expected = getExpectedImages({error: false, selectedImage: image});
     assert.same(actual, expected, msg);
     assert.end();
   })
