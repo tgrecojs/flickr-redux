@@ -7,7 +7,7 @@ import {bindActionCreators} from 'redux';
 
 import * as Actions from './reducer';
 import SelectedImage from './SelectedImage'
-const ViewImages = ({images, selectImageAction, searchMediaAction, selectedImage = images[0]}) => {
+const ViewFeaturedImages = ({featuredImages, selectImageAction, searchMediaAction, selectedImage = featuredImages[0]}) => {
   let input;
  
   return (
@@ -15,21 +15,11 @@ const ViewImages = ({images, selectImageAction, searchMediaAction, selectedImage
     <div>
       <SelectedImage {...selectedImage}/>
     </div>
-     <div>
-      <input type="text" ref = { 
-        (node) => { input = node }
-      } />
-      <button onClick={() => { 
-        searchMediaAction(input.value);
-        input.value = '' 
-      }
-      }>Search Images</button>
-    </div>
       <div>
-       <h2>All Images Gallery</h2>
+       <h2>Featured Gallery</h2>
       </div>
        <div className="image-thumbs">
-      {images.map((image, i) => (
+      {featuredImages.map((image, i) => (
        <div key={i} onClick={() => selectImageAction(image)}>
           <img src={image.mediaUrl} />
         </div>
@@ -40,11 +30,11 @@ const ViewImages = ({images, selectImageAction, searchMediaAction, selectedImage
 
 const mapStateToProps = state => {
   return {
-    images: state.images,
+    featuredImages: state.featuredImages,
     selectedImage: state.selectedImage,
   }
 }
 function mapActionCreatorsToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
-export default connect(mapStateToProps, mapActionCreatorsToProps)(ViewImages)
+export default connect(mapStateToProps, mapActionCreatorsToProps)(ViewFeaturedImages)
