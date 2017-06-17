@@ -14,10 +14,10 @@ export const FETCH_FEATURE_IMAGES_FAILURE = 'FETCH_FEATURE_IMAGES_FAILURE';
 export const SUBMIT_FORM = 'SUBMIT_FORM'
 
 
-import * as API_INFO from '../../api'
+import * as API_INFO from '../../../api'
 import axios from 'axios';
 // import cuid from 'cuid';
-import configureStore from '../../configureStore'
+import configureStore from '../../../configureStore'
 
  export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 function receivePosts(subreddit, json) {
@@ -124,7 +124,7 @@ const imageReducer = (state = defaultState, action = {}) => {
     case FETCH_IMAGES_FAILURE: return { ...state, images: [], loading: false, error: action.payload };
     case FETCH_FEATURED_IMAGES: return { ...state, loading: true};
     case SUBMIT_FORM: return { ...state, formData: action.payload};
-    case FETCH_FEATURED_IMAGES_SUCCESS: return { ...state, featuredImages: action.payload }
+    case FETCH_FEATURED_IMAGES_SUCCESS: return { ...state, images: action.payload }
     case FETCH_FEATURED_IMAGES_FAILURE: return { ...state, featuredImages: [], error: action.payload };
     //case FETCH_PHOTOSETS_SUCCESS: return { ...state, loading: false, photosets: action.payload};
     //case FETCH_PHOTOSETS_FAILURE: return { ...state, images: state.images, loading: false, error: false, photosets: action.payload }

@@ -1,36 +1,16 @@
 import React, { Component, PropTypes } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import ViewImages, { SelectedImage } from './features/gallery/ViewImages';
+import ViewImages from './features/gallery/components/IterateImages';
 import { connect } from 'react-redux'
-import {fetchPhotosets, fetchPhotosetsSuccess, fetchPhotosetsFailure, searchMediaAction} from './features/gallery/reducer'
+import {fetchPhotosets, fetchPhotosetsSuccess, fetchPhotosetsFailure, searchMediaAction} from './features/gallery/state/reducer'
+import SearchImages from './features/gallery/components/Search';
 import { fetchImages, fetchFullGallery } from './api'
 import {bindActionCreators} from 'redux';
 
   
 import axios from 'axios';
 
-const iteratePhotosets = (props) => {
-  // console.log({photosets})
-  return (
-    <ul>
-    {this.props.map(x => {
-      <li key={x.id}>{x.farm}</li>
-    })}
-    </ul>
-  )
-}
-const SinglePhotoset = props => {
-  const allPhotosets = props.data;
-  let photosets = allPhotosets.map(x => 
-      <li value={x.id} key={x.id}>{x.title._content}</li>
-  )
-  return (
-    <ul>
-      {photosets}
-    </ul>
-  )
-}
 class FullGallery extends Component {
   componentDidMount() {
     this.props.dispatch(searchMediaAction())
@@ -48,6 +28,7 @@ class FullGallery extends Component {
     // let { images } = this.props
     return (
       <div className="image-page">
+        <SearchImages />
         <ViewImages />
       </div>
     );

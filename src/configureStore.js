@@ -1,4 +1,4 @@
-import imageReducer, {defaultState} from './features/gallery/reducer';
+import imageReducer, {defaultState} from './features/gallery/state/reducer';
 import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga';
 import { devToolsEnhancer } from 'redux-devtools-extension';

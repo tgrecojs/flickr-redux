@@ -6,11 +6,11 @@ import { Provider } from 'react-redux'
 import configureStore from './configureStore';
 import  {devToolsEnhancer} from 'redux-devtools-extension';
 const store = configureStore(devToolsEnhancer());
-import * as Actions from './features/gallery/reducer';
+import * as Actions from './features/gallery/state/reducer';
 import { Router, Route, hashHistory } from 'react-router'
 /// import AllImagesComponent from './features/gallery/components/allImages.js'
-import FeaturedGallery from './featuredGallery'
-import FullGallery from './fullGallery'
+import FeaturedGallery from './pages/featuredGallery'
+import FullGallery from './pages/home'
 
 import ContactForm from './ContactForm'
 const example = () => <h2>Example!!!!!</h2>

@@ -2,7 +2,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 //import { ContactForm } from '../actions';
-import { SUBMIT_FORM } from './features/gallery/reducer'
+import { SUBMIT_FORM } from './features/gallery/state/reducer'
 export const submitForm = ({name = 'tom', email = 'tg@fordham.edu',date = Date.now(), message = 'hi'} = {}) => ({
   type: SUBMIT_FORM,
   payload: {name, email, date, message}

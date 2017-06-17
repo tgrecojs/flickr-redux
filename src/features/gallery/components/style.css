@@ -1,0 +1,18 @@
+.image-thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.image-thumbs img {
+  max-height: 200px;
+  flex-grow: 1;
+  margin: .5em;
+  transition: all .3s ease-in-out;
+  border: 2px solid #000;
+}
+
+.image-thumbs img:hover {
+  transform: scale(1.1);
+}

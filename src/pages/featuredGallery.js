@@ -1,10 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import ViewImages from './features/gallery/components/IterateImages';
+import ViewImages from '../features/gallery/components/IterateImages';
 import { connect } from 'react-redux'
-import * as Actions from './features/gallery/state/reducer'
-import { fetchImages, fetchFeaturedGallery } from './api'
+import * as Actions from '../features/gallery/state/reducer'
 import {bindActionCreators} from 'redux';
 
 class FeaturedGallery extends Component {
@@ -15,7 +12,7 @@ class FeaturedGallery extends Component {
   render() {
     return (
       <div className="image-page">
-        <ViewImages />
+        <ViewImages title="Featured Gallery" />
       </div>
     );
   }
