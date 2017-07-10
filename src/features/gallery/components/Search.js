@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 const SearchImages = ({searchMediaAction}) => {
   let input;
   return (
-   <div className="flex-row-centered">
-      <input type="text" ref = { 
+   <div className="input-row">
+      <input placeholder="flowers" type="text" ref = { 
         (node) => { input = node }
       } />
       <button onClick={() => { 

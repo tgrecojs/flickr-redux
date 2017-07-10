@@ -10,9 +10,18 @@
   flex-grow: 1;
   margin: .5em;
   transition: all .3s ease-in-out;
-  border: 2px solid #000;
+  border: 2px solid #ae4d54;
 }
 
 .image-thumbs img:hover {
   transform: scale(1.1);
+}
+
+.flex-col img {
+  width: 50%;
+}
+@media (max-width: 669px) {
+.flex-col img {
+    width: 90%;
+  }
 }

@@ -12,7 +12,7 @@ import { Router, Route, hashHistory } from 'react-router'
 import FeaturedGallery from './pages/featuredGallery'
 import FullGallery from './pages/home'
 
-import ContactForm from './ContactForm'
+import ContactForm from './pages/ContactForm'
 const example = () => <h2>Example!!!!!</h2>
 ReactDOM.render(
   <Provider store={store}>
