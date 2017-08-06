@@ -4,6 +4,12 @@ import './App.css';
 import { Link } from 'react-router' 
 import talutoLogo from './taluto-logo-white.svg';
 // import Nav from './features/navigation/';
+/**
+ * Facebook button
+ *  <li><div className="fb-follow" 
+    data-href="https://www.facebook.com/publicityphotosmt/" data-layout="button" data-size="large" data-show-faces="true"></div></li>
+ * 
+ */
 const Nav = () => (
   <ul className="flex-nav">
     <li><Link to='/'>Home</Link></li>  
@@ -12,7 +18,7 @@ const Nav = () => (
     Follow on Facebook
     </a></li>
     <li>
-      <a href="mailto:miket79885@aol.com">Email Mike</a>
+      <a href="mailto:mike@taluto.com">Email Mike</a>
     </li>
   </ul>
 );
